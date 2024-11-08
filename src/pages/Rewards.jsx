@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
-import pic from "./pic.jpg";
+// import pic from "./pic.jpg";
 
 export default function RewardsPage() {
     const [userInfo, setUserInfo] = useState({
         name: "Vishwajeet Champ",
-        profilePicture: pic,
+        // profilePicture: pic,
         rank: 5,
     });
     const [userXP, setUserXP] = useState({

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import pic from "./pic.jpg";
+// import pic from "./pic.jpg";
 
 export default function Leaderboard() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -48,7 +48,9 @@ export default function Leaderboard() {
         </div>
         <div className="rounded-full overflow-hidden w-12 h-12 cursor-pointer transition-transform duration-300 transform hover:scale-110 hover:rotate-6 shadow-md">
           <a href="profile.html">
-            <img src={pic} alt="Profile" className="w-full h-full object-cover" />
+            <img 
+            // src={pic}
+             alt="Profile" className="w-full h-full object-cover" />
           </a>
         </div>
       </nav>
