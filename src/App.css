@@ -6,3 +6,23 @@
     animation: spinner-bulqg1 0.8s infinite linear alternate,
       spinner-oaa3wk 1.6s infinite linear;
   }
+
+
+  *{
+    margin: 0;
+    padding: 0;
+  }
+  
+  *::-webkit-scrollbar {
+    display: none;
+  }
+  
+  
+  .wrapped-text {
+    max-width: 300px; /* Adjust the width as needed */
+    overflow-wrap: break-word; /* Allow breaking of words */
+    overflow: hidden; /* Hide overflow content */
+    text-overflow: ellipsis; /* Add ellipsis for overflowed text */
+    white-space: normal; /* Allow wrapping */
+  }
+  
