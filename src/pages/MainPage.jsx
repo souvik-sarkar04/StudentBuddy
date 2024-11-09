@@ -1,18 +1,16 @@
 import { useState } from 'react'
-// import Navbar from '../components/core/Navbar.jsx'
-// import './App.css'
-// import './App.css'
 import Calendar from '../components/core/Calendar.jsx'
-
+import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 function MainPage() {
   const [count, setCount] = useState(0)
   const [cards, setCards] = useState(["Classes", "Assignment", "Study-Goals"])
 const navigate = useNavigate()
+const {user} = useSelector((state) => state.profile)
 const handleNavigate = (item) => {
   if(item == "Classes")
   {
-    navigate('/dashboard/enrolled-courses')
+    navigate('/dashboard/enrolled-classes')
   }
   else if(item == "Assignment")
     {
@@ -25,23 +23,14 @@ const handleNavigate = (item) => {
 }
   return (
     <>
-      {/*Navbar*/}
-      {/* <Navbar /> */}
-      <h1 className='text-white text-5xl  text-center'>Deadlines</h1>
-      <p className='text-white py-3 text-2xl text-caribbeangreen-200 text-center'>Complete assignments within the deadline to get aura points</p>
-
+     
+      <h1 className='text-white text-5xl py-3  text-center'>Deadlines</h1>
+<p className='text-white text-4xl py-3  text-center'>Welcome, {user?.firstName}</p>
+      <p className='text-white py-6 text-2xl text-caribbeangreen-200 text-center'>Complete assignments within the deadline to get aura points</p>
       <div className="absolute top-0 z-[-2] h-screen w-screen bg-neutral-950 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]"></div>
       <div className="flex">
-        {/* left side content */}
-        <div className='h-[calc(100vh-64px)] w-1/4 bg-slate-700'>
-          {/* <Calendar className="text-white" onChange={onchange}></Calendar> */}
-          <Calendar></Calendar>
-        </div>
-
-
-
-        {/* right side content */}
-        <div className='h-[calc(100vh - 64px)] text-white w-3/4 flex justify-center items-center flex-wrap'>
+       
+        <div className='h-[calc(100vh - 64px)] text-white w-3/4 py-3 m-auto flex justify-center items-center flex-wrap'>
           <style>
             {`
 			  @keyframes border-width {

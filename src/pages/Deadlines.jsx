@@ -6,7 +6,6 @@ import { FaSortDown, FaSortUp } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
 import { CiEdit } from "react-icons/ci";
 import { v4 as uuidv4 } from 'uuid';
-// import Navbar from '../components/core/Navbar'
 
 const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
 const times = Array.from({ length: 24 }, (_, index) => index);
@@ -56,10 +55,8 @@ function Classshedule() {
 
 	return (
 		<>
-		{/* bg-neutral-950 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))] */}
 			<div className="absolute top-0 z-[-2] h-screen w-screen "></div>
-			{/* <Navbar /> */}
-			{/*body*/}
+			
 			<div className='h-[calc(100vh-64px)] w-[100vw] bg-gray-700 flex md:flex-row flex-col-reverse justify-center items-center '>
 				<div className='h-full md:w-1/4 w-full flex flex-col items-center my-10'>
 					<h1 className='text-white font-bold text-3xl py-3'>Add Classes</h1>
@@ -102,7 +99,7 @@ function Classshedule() {
 
 				{/*right*/}
 				<div className='h-full md:w-3/4 w-full bg-gray-300 flex flex-col justify-center items-center'>
-					{forms.length == 0 ? <div><div className='h-[1px] bg-white w-full'></div> <h1 className='text-4xl  text-white my-7'>No Classsss</h1><div className='h-[1px] bg-white w-full'></div></div> :
+					{forms.length == 0 ? <div><div className='h-[1px] bg-white w-full'></div> <h1 className='text-4xl  text-white my-7'>No Class</h1><div className='h-[1px] bg-white w-full'></div></div> :
 						<table className='table-auto rounded-md w-[90%] overflow-hidden'>
 							<thead className='w-[100%] bg-black text-white'>
 								<tr className='w-[100%] h-5'>

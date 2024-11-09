@@ -27,29 +27,23 @@ export default function SubSectionModal({
     getValues,
   } = useForm()
 
-  // console.log("view", view)
-  // console.log("edit", edit)
-  // console.log("add", add)
-
   const dispatch = useDispatch()
   const [loading, setLoading] = useState(false)
   const { token } = useSelector((state) => state.auth)
   const { course } = useSelector((state) => state.course)
 
   useEffect(() => {
-    if (view || edit) { /// for view and edit modal
-      // console.log("modalData", modalData)
+    if (view || edit) { 
       setValue("lectureTitle", modalData.title)
       setValue("lectureDesc", modalData.description)
       setValue("lectureVideo", modalData.videoUrl)
     }
   }, [])
 
-  // detect whether form is updated or not
+  ///in case of editing(updation)
   const isFormUpdated = () => {
     const currentValues = getValues()
-    // console.log("changes after editing form values:", currentValues)
-    if ( ///in case of editing(updation)
+    if ( 
       currentValues.lectureTitle !== modalData.title ||
       currentValues.lectureDesc !== modalData.description ||
       currentValues.lectureVideo !== modalData.videoUrl
@@ -62,13 +56,10 @@ export default function SubSectionModal({
   /// handle the editing of subsection
   const handleEditSubsection = async () => {
     const currentValues = getValues()
-    // console.log("changes after editing form values:", currentValues)
     const formData = new FormData()
-    // console.log("Values After Editing form values:", currentValues)
     /// SubSection data and subsectionId were passed to editSubSection in NestedView.jsx -> contained in modal data
     formData.append("sectionId", modalData.sectionId)
     formData.append("subSectionId", modalData._id)
-    /// if updation has occurred -> then append :
     if (currentValues.lectureTitle !== modalData.title) {
       formData.append("title", currentValues.lectureTitle)
     }
@@ -79,10 +70,8 @@ export default function SubSectionModal({
       formData.append("video", currentValues.lectureVideo)
     }
     setLoading(true)
-    ///API Call to update the subsection
     const result = await updateSubSection(formData, token)
     if (result) {
-      // console.log("result", result)
       //? update the structure of course???
       const updatedCourseContent = course.courseContent.map((section) =>
         section._id === modalData.sectionId ? result : section
@@ -98,8 +87,7 @@ export default function SubSectionModal({
   const onSubmit = async (data) => {
     // console.log(data)
     if (view) return
-/// view modal has no option of submit
-    if (edit) { /// editing 
+    if (edit) {  
       if (!isFormUpdated()) {
         toast.error("No changes made to the form")
       } else {
@@ -109,13 +97,11 @@ export default function SubSectionModal({
     }
 ///Adding subsection :
     const formData = new FormData()
-    /// sectionId and other data fetched are appended to formData
-    formData.append("sectionId", modalData) /// as addSubsection is assigned sectionId in NestedView.jsx -> hence, it is directly assigned
+    formData.append("sectionId", modalData) 
     formData.append("title", data.lectureTitle)
     formData.append("description", data.lectureDesc)
     formData.append("video", data.lectureVideo)
     setLoading(true)
-    /// Add(create) subsection API called :
     const result = await createSubSection(formData, token)
     if (result) {
       //? update the structure of course???
@@ -125,7 +111,7 @@ export default function SubSectionModal({
       const updatedCourse = { ...course, courseContent: updatedCourseContent }
       dispatch(setCourse(updatedCourse))
     }
-    setModalData(null) ///remove the modal after adding the course
+    setModalData(null) 
     setLoading(false)
   }
 
@@ -138,7 +124,6 @@ export default function SubSectionModal({
           {/* /// Conditional rendering based on view, Edit or Add modal */}
             {view && "Viewing"} {add && "Adding"} {edit && "Editing"} Lecture
           </p>
-          {/* /// Clicking the button will close the modal */}
           <button onClick={() => (!loading ? setModalData(null) : {})}>
             <RxCross2 className="text-2xl text-richblack-5" />
           </button>
@@ -159,7 +144,6 @@ export default function SubSectionModal({
             viewData={view ? modalData.videoUrl : null}
             editData={edit ? modalData.videoUrl : null}
           />
-          {/* //? Lecture Title */}
           <div className="flex flex-col space-y-2">
             <label className="text-sm text-richblack-5" htmlFor="lectureTitle">
               Lecture Title {!view && <sup className="text-pink-200">*</sup>}
@@ -197,7 +181,6 @@ export default function SubSectionModal({
               </span>
             )}
           </div>
-          {/* In viewing, there is no button */}
           {!view && (
             <div className="flex justify-end">
               <IconBtn

@@ -5,7 +5,7 @@ const CustomOtpInput = ({ numInputs = 6, onChange }) => {
 
   const handleChange = (value, index) => {
     const newOtp = [...otp];
-    newOtp[index] = value.substring(0, 1); // Only take the first character
+    newOtp[index] = value.substring(0, 1); 
     setOtp(newOtp);
     onChange(newOtp.join(''));
 
@@ -42,7 +42,7 @@ const CustomOtpInput = ({ numInputs = 6, onChange }) => {
             border: '1px solid #ccc',
             textAlign: 'center',
           }}
-          maxLength={1} // Only allow one character
+          maxLength={1} 
         />
       ))}
     </div>

@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit"
 
 const initialState = {
-  step: 1, //by default, only step 1 will be highlighted
+  step: 1, 
   course: null,
   editCourse: false,
   paymentLoading: false,

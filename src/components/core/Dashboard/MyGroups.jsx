@@ -31,10 +31,7 @@ const MyGroups = () => {
       <div className='flex flex-col gap-8' onClick={() => {console.log("Clicking on button")}}>
         {
           myGroupMembers.map((item) => (
-            <Group key={item.id} title ={item.title} email= {item.email}/>
-           
-          
-          
+            <Group key={item.id} title ={item.title} email= {item.email}/>       
           ))
         }
       </div>

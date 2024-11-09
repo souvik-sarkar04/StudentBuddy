@@ -50,10 +50,6 @@ export async function getUserEnrolledCourses(token) {
       //? Error resolving : server -> middlewares -> auth.js -> req.header("Authorization").replace("Bearer ", ""); Authorization written there and here should have same spelling
     )
     console.log("AFTER Calling BACKEND API FOR ENROLLED COURSES");
-    // console.log(
-    //   "GET_USER_ENROLLED_COURSES_API API RESPONSE............",
-    //   response
-    // )
 
     if (!response.data.success) {
       throw new Error(response.data.message)

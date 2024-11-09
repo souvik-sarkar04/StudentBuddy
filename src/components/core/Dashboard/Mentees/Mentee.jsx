@@ -25,15 +25,7 @@ const Mentee = ({title, email}) => {
             <p className="text-sm text-richblack-300">{email}</p>
           </div>
         </div>
-        {/* <IconBtn
-          text="Edit"
-          onclick={() => {
-            navigate("/dashboard/settings")
-          }}
-
-        >
-          <RiEditBoxLine />      
-        </IconBtn> */}
+        
       </div>
     </>
   )

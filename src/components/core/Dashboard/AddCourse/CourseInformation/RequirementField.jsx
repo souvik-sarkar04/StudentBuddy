@@ -26,7 +26,6 @@ export default function RequirementsField({
 
   const handleAddRequirement = () => {
     if (requirement) {
-      /// add new requirement to the existing list of requirements and set the current requirement to null as it is already been counted
       setRequirementsList([...requirementsList, requirement]) 
       setRequirement("")
     }
@@ -34,7 +33,7 @@ export default function RequirementsField({
 
   const handleRemoveRequirement = (index) => {
     const updatedRequirements = [...requirementsList]
-    updatedRequirements.splice(index, 1) /// deletes 1 element from the array starting from the specified index
+    updatedRequirements.splice(index, 1) 
     setRequirementsList(updatedRequirements)
   }
 
@@ -49,7 +48,6 @@ export default function RequirementsField({
           id={name}
           value={requirement}
           onChange={(e) => setRequirement(e.target.value)}
-          /// whatever is written in the input value, that is passed as a new requirement to setRequirement()
           className="form-style w-full"
         />
         {/* /// Add requirement button */}
@@ -67,7 +65,6 @@ export default function RequirementsField({
           {requirementsList.map((requirement, index) => (
             <li key={index} className="flex items-center text-richblack-5">
               <span>{requirement}</span>
-              {/* Button to remove the requirements ( using handleRemoveRequirement()) : */}
               <button
                 type="button"
                 className="ml-2 text-xs text-pure-greys-300 "

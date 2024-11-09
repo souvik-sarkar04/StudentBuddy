@@ -30,5 +30,3 @@ root.render(
   </React.StrictMode>
    </>
 );
-//keep .env file outside src folder
-//check if signup is working without proxy

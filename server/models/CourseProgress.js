@@ -5,7 +5,6 @@ const courseProgress = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "Course",
   },
-  //! Added in EdTech Frontend 7 : 
   userId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "user",

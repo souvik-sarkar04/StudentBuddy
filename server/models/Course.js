@@ -53,7 +53,6 @@ const coursesSchema = new mongoose.Schema({
 		type: String,
 		enum: ["Draft", "Published"],
 	},
-	//! EdTech Frontend 6 : attribute created to access in frontend
 	createdAt: {
 		type:Date,
 		default:Date.now

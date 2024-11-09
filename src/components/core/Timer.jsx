@@ -61,7 +61,6 @@ export default function Timer({deadlines}) {
     }, [currentTime]);
 
     return (
-        // <div className="w-full h-full flex flex-col items-center justify-center bg-gray-100 p-6">
 
             <div className="h-10 w-36 grid grid-cols-4 gap-1 text-center justify-center">
                 <div className={`${(remainingTime.remainingDays <= 0 && remainingTime.remainingHours < 12) ? "bg-red-600" : "bg-blue-200"} flex flex-col items-center p-2 h-8 w-8 rounded-lg shadow`}>
@@ -77,6 +76,5 @@ export default function Timer({deadlines}) {
                     <span className="text-sm font-bold">{remainingTime.remainingSeconds}</span>
                 </div>
             </div>
-       // </div>
     );
 }

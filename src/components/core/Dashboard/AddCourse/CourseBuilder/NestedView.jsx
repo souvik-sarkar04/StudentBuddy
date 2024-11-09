@@ -19,16 +19,13 @@ export default function NestedView({ handleChangeEditSectionName }) {
   const { token } = useSelector((state) => state.auth)
   const dispatch = useDispatch()
 
-  /// States to keep track of mode of modal [add, view, edit] :
   const [addSubSection, setAddSubsection] = useState(null)
   const [viewSubSection, setViewSubSection] = useState(null)
   const [editSubSection, setEditSubSection] = useState(null)
 
-  /// to keep track of confirmation modal :
   const [confirmationModal, setConfirmationModal] = useState(null)
 
   const handleDeleleSection = async (sectionId) => {
-    /// call API for delete section
     const result = await deleteSection({
       sectionId,
       courseId: course._id,
@@ -45,12 +42,7 @@ export default function NestedView({ handleChangeEditSectionName }) {
     const result = await deleteSubSection({ subSectionId, sectionId, token })
     if (result) {
       //? update the structure of course ???   -> this pattern is same for all areas 
-      //! We make changes to SubSection.js in server->controllers : this means that it now returns section data -> in that case, we need to convert
-      //! the section data into course data. So, if both the section id's match(section in courseSlice and section asked to be deleted by handleDleteSubesection()),
-       //! then send the obtained "updated section data" from the server else send the persisting section data.
-       //! Join it with the current course content to get the updatedCourse which can be dispatched to update the course data
-     //! Initially, editing and deleting sections were not possible as the STATES of the course could not be changed -> now, using setCourse(), it can be changed.
-
+     
       const updatedCourseContent = course.courseContent.map((section) =>
         section._id === sectionId ? result : section
       )
@@ -81,7 +73,6 @@ export default function NestedView({ handleChangeEditSectionName }) {
                 {/* Button for toggling : */}
                 <button
                   onClick={() =>
-                    // /toggle functionality - edit or create : 
                     handleChangeEditSectionName(
                       section._id,
                       section.sectionName
@@ -90,7 +81,6 @@ export default function NestedView({ handleChangeEditSectionName }) {
                 >
                   <MdEdit className="text-xl text-richblack-300" />
                 </button>
-                {/* Button to generate modal - confirmation modal */}
                 <button
                   onClick={() =>
                     setConfirmationModal({
@@ -114,7 +104,7 @@ export default function NestedView({ handleChangeEditSectionName }) {
               {section.subSection.map((data) => (
                 <div
                   key={data?._id}
-                  onClick={() => setViewSubSection(data)} /// viewSubSection = data -> display the subsection data on clicking this div
+                  onClick={() => setViewSubSection(data)} 
                   className="flex cursor-pointer items-center justify-between gap-x-3 border-b-2 border-b-richblack-600 py-2"
                 >
                   <div className="flex items-center gap-x-3 py-2 ">
@@ -129,7 +119,6 @@ export default function NestedView({ handleChangeEditSectionName }) {
                     onClick={(e) => e.stopPropagation()}
                     className="flex items-center gap-x-3"
                   >
-                    {/* Edit subsection button : */}
                     <button
                       onClick={() =>
                         setEditSubSection({ ...data, sectionId: section._id })
@@ -138,7 +127,6 @@ export default function NestedView({ handleChangeEditSectionName }) {
                       <MdEdit className="text-xl text-richblack-300" />
                     </button>
 
-                      {/* Delete subsection button : */}
                     <button
                       onClick={() =>
                         setConfirmationModal({
@@ -172,25 +160,25 @@ export default function NestedView({ handleChangeEditSectionName }) {
         ))}
       </div>
       {/* //?  Modal Display */}
-      {addSubSection ? ( /// if we are adding a subsection
+      {addSubSection ? ( 
         <SubSectionModal
           modalData={addSubSection}
           setModalData={setAddSubsection}
           add={true}
         />
-      ) : viewSubSection ? (  /// if we are viewing a subsection
+      ) : viewSubSection ? (  
         <SubSectionModal
           modalData={viewSubSection}
           setModalData={setViewSubSection}
           view={true}
         />
-      ) : editSubSection ? ( ////// if we are editing a subsection
+      ) : editSubSection ? ( 
         <SubSectionModal
           modalData={editSubSection}
           setModalData={setEditSubSection}
           edit={true}
         />
-      ) : ( ///otherwise display nothing
+      ) : ( 
         <></>
       )}
       {/* //? Confirmation Modal rendering */}

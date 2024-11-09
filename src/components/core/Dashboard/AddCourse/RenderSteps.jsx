@@ -7,8 +7,6 @@ import PublishCourse from "./PublishCourse"
 import {useForm} from 'react-hook-form'
 
 export default function RenderSteps() {
-  /// extracting step from courseSlice.js 
-//   const form = useForm()
   const { step } = useSelector((state) => state.course)
 
   const steps = [
@@ -37,11 +35,10 @@ export default function RenderSteps() {
             >
               <button
                 className={`grid cursor-default aspect-square w-[34px] place-items-center rounded-full border-[1px] ${
-                  step === item.id /// the currently accessed step is highlighted with yellow, others are rendered in black
+                  step === item.id 
                     ? "border-yellow-50 bg-yellow-900 text-yellow-50"
                     : "border-richblack-700 bg-richblack-800 text-richblack-300"
                 }
-                /// When we are done with a step, it is shown with ticked mark icon 
                  ${step > item.id && "bg-yellow-50 text-yellow-50"}} `}
               >
                 {step > item.id ? (
@@ -50,9 +47,8 @@ export default function RenderSteps() {
                   item.id
                 )}
               </button>
-              {/* /// Dashes between the labels : */}
             </div>
-            {item.id !== steps.length && ( /// For intermediate steps, the trailing dashes are marked grey and the succeeding dashes are marked yellow
+            {item.id !== steps.length && ( 
               <>
                 <div
                 key = {item.id}
@@ -65,7 +61,6 @@ export default function RenderSteps() {
           </>
         ))}
       </div>
-{/* /// Title written below circular numbering */}
       <div className="relative mb-16 flex w-full select-none justify-between">
         {steps.map((item) => (
           <>

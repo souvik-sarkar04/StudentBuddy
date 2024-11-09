@@ -5,7 +5,6 @@ import { useNavigate } from "react-router-dom"
 
 import { fetchInstructorCourses } from "../../../services/operations/courseDetailsApi"
 import IconBtn from "../../common/IconBtn"
-// import CoursesTable from "./InstructorCourses/CoursesTable"
 
 export default function MyCourses() {
   const { token } = useSelector((state) => state.auth)
@@ -37,7 +36,6 @@ export default function MyCourses() {
           <VscAdd />
         </IconBtn>
       </div>
-      {/* {courses && <CoursesTable courses={courses} setCourses={setCourses} />} */}
     </div>
   )
 }

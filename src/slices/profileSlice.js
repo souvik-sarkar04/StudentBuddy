@@ -1,9 +1,7 @@
 import {createSlice} from "@reduxjs/toolkit"
 
-//? User is available but he is not instructor -> for such a user, cartSlice is needed
 
 const initialState = {
-    //? Error resolving : setUser(null) sets the user to null so in profile page, user is undefined as its data does not persist, hence, it is stored in localStorage
     user: localStorage.getItem("user") ? JSON.parse(localStorage.getItem("user")) : null,
     loading: false,
     xp : 0,

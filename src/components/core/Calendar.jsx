@@ -1,8 +1,4 @@
-// src/components/Calendar.jsx
 import React, { useState, useEffect } from 'react';
-// import Modal from './Modal';
-
-
 
 const Calendar = ({form, setForm}) => {
   const [currentMonth, setCurrentMonth] = useState(new Date().getMonth());
@@ -25,9 +21,8 @@ const Calendar = ({form, setForm}) => {
     const firstDayOfWeek = firstDayOfMonth.getDay();
     const calendarDays = [];
 
-    // Create empty boxes for days before the first day of the month
     for (let i = 0; i < firstDayOfWeek; i++) {
-      calendarDays.push(null); // Empty days before the 1st of the month
+      calendarDays.push(null); 
     }
 
     // Create days for the current month
@@ -66,7 +61,6 @@ const Calendar = ({form, setForm}) => {
   const calendarDays = generateCalendar(currentYear, currentMonth);
 
   return (
-    // <div className="flex items-center justify-center h-1/2">
       <div className="w-full mx-auto px-3 md:my-10 my-3">
         <div className="bg-gray-600 shadow-lg rounded-lg overflow-hidden">
           <div className="flex items-center justify-between px-6 py-3 bg-blue-500">
@@ -89,10 +83,7 @@ const Calendar = ({form, setForm}) => {
             ))}
           </div>
         </div>
-      {/* </div> */}
 
-      {/* {selectedDate && <Modal date={selectedDate} onClose={() => setSelectedDate(null)} />} */}
-	  {/* {console.log(selectedDate)} */}
     </div>
   );
 };

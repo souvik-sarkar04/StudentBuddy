@@ -31,10 +31,7 @@ const MyMentees = () => {
       <div className='flex flex-col gap-8' onClick={() => {console.log("Clicking on button")}}>
         {
           myMentees.map((item) => (
-            <Mentee key={item.id} title ={item.title} email= {item.email}/>
-           
-          
-          
+            <Mentee key={item.id} title ={item.title} email= {item.email}/>   
           ))
         }
       </div>

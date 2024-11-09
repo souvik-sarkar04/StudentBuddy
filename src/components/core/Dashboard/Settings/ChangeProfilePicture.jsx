@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react"
-// import { useEffect, useRef, useState } from "react"
 import { FiUpload } from "react-icons/fi"
 import { useDispatch, useSelector } from "react-redux"
 
@@ -17,21 +16,9 @@ export default function ChangeProfilePicture() {
   const [imageFile, setImageFile] = useState(null)
   const [previewSource, setPreviewSource] = useState(null)
 
-//   const fileInputRef = useRef(null)
-
-//   useEffect(() =>  {
-//     const handleClick = () => {
-//     fileInputRef.current.click()
-//   }
-//   handleClick()
-// }, [])
-//   const handleClick = () => {
-//     fileInputRef.current.click()
-//   }
 
   const handleFileChange = (e) => {
     const file = e.target.files[0]
-    // console.log(file)
     if (file) {
       setImageFile(file)
       previewFile(file)
@@ -52,7 +39,6 @@ export default function ChangeProfilePicture() {
       setLoading(true)
       const formData = new FormData()
       formData.append("displayPicture", imageFile)
-      // console.log("formdata", formData)
       dispatch(updateDisplayPicture(token, formData)).then(() => {
         setLoading(false)
       })
@@ -80,13 +66,11 @@ export default function ChangeProfilePicture() {
             <div className="flex flex-row gap-3">
               <input
                 type="file"
-                // ref={fileInputRef}
                 onChange={handleFileChange}
                 className="hidden"
                 accept="image/png, image/gif, image/jpeg"
               />
               <button
-                // onClick={handleClick}
                 disabled={loading}
                 className="cursor-pointer rounded-md bg-richblack-700 py-2 px-5 font-semibold text-richblack-50"
               >

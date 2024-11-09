@@ -42,7 +42,6 @@ export default function Upload({
   })
 
   const previewFile = (file) => {
-    // console.log(file)
     const reader = new FileReader()
     reader.readAsDataURL(file)
     reader.onloadend = () => {
@@ -65,9 +64,6 @@ export default function Upload({
       </label>
       <div
         className=
-        //  {`${
-          //  isDragActive ? "bg-richblack-600" : "bg-richblack-700"
-        //  }`
       {`flex min-h-[250px] cursor-pointer items-center justify-center rounded-md border-2 border-dotted border-richblack-500`}
       >
         {previewSource ? (
@@ -100,7 +96,7 @@ export default function Upload({
             className="flex w-full flex-col items-center p-6 text-white"
             {...getRootProps()}
           >
-            ki korchish
+            
             <input 
             className="form-style block opacity-100"
               placeholder="input here"
@@ -112,7 +108,7 @@ export default function Upload({
              />
               
              
-              ami bhalo 
+               
             <div className="grid aspect-square w-14 place-items-center rounded-full bg-pure-greys-800">
               <FiUploadCloud className="text-2xl text-yellow-50" />
             </div>

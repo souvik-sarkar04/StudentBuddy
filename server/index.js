@@ -2,15 +2,12 @@ const express = require("express");
 const app = express();
 const multer = require('multer');
 const userRoutes = require("./routes/User");
-// const profileRoutes = require("./routes/Profile");
-// const paymentRoutes = require("./routes/Payments");
+
 const courseRoutes = require("./routes/Course");
-// const contactUsRoute = require("./routes/Contact");
 const database = require("./config/database");
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
-// const {cloudinaryConnect } = require("./config/cloudinary");
-// const fileUpload = require("express-fileupload");
+
 const dotenv = require("dotenv");
 const uploadSingle = multer({
 	storage: multer.diskStorage({
@@ -25,9 +22,7 @@ const uploadSingle = multer({
 dotenv.config();
 const PORT = process.env.PORT || 4000;
 
-//database connect
 database.connect();
-//middlewares
 app.use(express.json());
 app.use(cookieParser());
 app.use(
@@ -52,10 +47,7 @@ app.use("/api/v1/auth", userRoutes);
 console.log("Course routes are working")
 //! introduction of multer to read form data from useForm() - important bug fix 
 app.use("/api/v1/course", multer().none(),  courseRoutes);
-// app.use("/api/v1/payment", paymentRoutes);
-// app.use("/api/v1/reach", contactUsRoute);
 
-//def route
 
 app.get("/", (req, res) => {
 	return res.json({

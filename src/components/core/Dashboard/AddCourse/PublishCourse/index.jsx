@@ -33,25 +33,22 @@ export default function PublishCourse() {
   }
 
   const handleCoursePublish = async () => {
-    //! check if form has been updated or not - find reason of these conditions ?
     if (
       (course?.status === COURSE_STATUS.PUBLISHED &&
         getValues("public") === true) ||
       (course?.status === COURSE_STATUS.DRAFT && getValues("public") === false)
     ) {
-      // form has not been updated
-      // no need to make api call
-      ///show the existing courses :
+     
       goToCourses()
       return
     }
     const formData = new FormData()
     formData.append("courseId", course._id)
-    const courseStatus = getValues("public") /// public == true -> published, public = false -> Draft 
+    const courseStatus = getValues("public") 
       ? COURSE_STATUS.PUBLISHED
       : COURSE_STATUS.DRAFT
     formData.append("status", courseStatus)
-    setLoading(true) /// mark loading = true before calling API(for updating course)
+    setLoading(true) 
     const result = await editCourseDetails(formData, token)
     if (result) {
       goToCourses()
@@ -60,7 +57,6 @@ export default function PublishCourse() {
   }
 
   const onSubmit = (data) => {
-    // console.log(data)
     handleCoursePublish()
   }
 

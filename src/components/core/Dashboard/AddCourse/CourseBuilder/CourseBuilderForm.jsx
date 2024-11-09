@@ -28,25 +28,19 @@ export default function CourseBuilderForm() {
   const { course } = useSelector((state) => state.course)
   const { token } = useSelector((state) => state.auth)
 console.log("course :", course)
-  // handle form submission
   const onSubmit = async (data) => {
-    // console.log(data)
     setLoading(true)
 
     let result;
-    if (editSectionName) { ///we are editing the section name
+    if (editSectionName) { 
       result = await updateSection(
-        ///call update section API
         { /// data :
           sectionName: data.sectionName,
           sectionId: editSectionName,
-          // courseId: course._id,
         },
         token
       )
-      // console.log("edit", result)
-    } else { /// creating section
-      ///call create section API
+    } else { 
       result = await createSection(
         {
           sectionName: data.sectionName,
@@ -55,11 +49,8 @@ console.log("course :", course)
         token
       )
     }
-    /// if valid result is obtained, then update the values 
     if (result) {
-      // console.log("section result", result)
-      /// course = result, editSection = null, sectionName in form = null
-      dispatch(setCourse(result))
+       dispatch(setCourse(result))
       setEditSectionName(null)
       setValue("sectionName", "")
     }
@@ -67,13 +58,11 @@ console.log("course :", course)
   }
 
   const cancelEdit = () => {
-    /// editSectionName set to null and SectionName value in form is set to empty
     setEditSectionName(null)
     setValue("sectionName", "")
   }
 
   const handleChangeEditSectionName = (sectionId, sectionName) => {
-    ///toggle functionality -> if sectionId is previously present for editing, then do not send it for editing otheerwise send
     if (editSectionName === sectionId) {
       cancelEdit()
       return
@@ -83,22 +72,9 @@ console.log("course :", course)
   }
 
   const goToNext = () => {
-    // if (course.courseContent.length === 0) {
-    //   /// atleast 1 course must be created
-    //   toast.error("Please add atleast one section")
-    //   return
-    // }
-    // if (
-    //   course.courseContent.some((section) => section.subSection.length === 0)
-    // ) {
-    //   ///atleast 1 lecture(subsection) must be added
-    //   toast.error("Please add atleast one lecture in each section")
-    //   return
-    // }
-    // /// valid course created -> move to step 3
+    
     dispatch(setStep(3))
   }
-// debug what is courseContent 
 
   const goBack = () => {///back -> go to step 1, we need to edit the course(editCourse=true) and we are not creating the course
     dispatch(setStep(1))
@@ -106,7 +82,7 @@ console.log("course :", course)
   }
 
   return (
-    // Section
+    
     <div className="space-y-8 rounded-md border-[1px] border-richblack-700 bg-richblack-800 p-6">
       <p className="text-2xl font-semibold text-richblack-5">Course Builder</p>
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
@@ -127,10 +103,9 @@ console.log("course :", course)
             </span>
           )}
         </div>
-        {/* Buttons : Create Section, if we tried to edit -> Edit Section Name */}
         <div className="flex items-end gap-x-4">
           <IconBtn
-            type="submit" /// clicking on this button will trigger onSubmit() function specified in form's onSubmit attribute 
+            type="submit" 
             disabled={loading}
             text={editSectionName ? "Edit Section Name" : "Create Section"}
             outline={true}

@@ -26,7 +26,6 @@ export default function Instructor() {
       })()
     }, [])
   
-    /// Calculate total amount and total students
     const totalAmount = instructorData?.reduce(
       (acc, curr) => acc + curr.totalAmountGenerated,
       0
@@ -52,8 +51,7 @@ export default function Instructor() {
         ) : courses.length > 0 ? (
           <div>
             <div className="my-4 flex h-[450px] space-x-4">
-              {/* /// Render chart / graph */}
-              {totalAmount > 0 || totalStudents > 0 ? ( /// conditions to render chart 
+              {totalAmount > 0 || totalStudents > 0 ? ( 
                 <InstructorChart courses={instructorData} />
               ) : (
                 <div className="flex-1 rounded-md bg-richblack-800 p-6">
@@ -89,7 +87,6 @@ export default function Instructor() {
               </div>
             </div>
             <div className="rounded-md bg-richblack-800 p-6">
-              {/* /// Render 3 courses(top) */}
               <div className="flex items-center justify-between">
                 <p className="text-lg font-bold text-richblack-5">Your Courses</p>
                 <Link to="/dashboard/my-courses">
@@ -125,7 +122,7 @@ export default function Instructor() {
               </div>
             </div>
           </div>
-        ) : ( /// Iff no courses have been added
+        ) : ( /// If no courses have been added
           <div className="mt-20 rounded-md bg-richblack-800 p-6 py-20">
             <p className="text-center text-2xl font-bold text-richblack-5">
               You have not created any courses yet

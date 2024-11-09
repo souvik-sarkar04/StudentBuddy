@@ -1,22 +1,22 @@
 const mongoose = require("mongoose");
 
-const RewardsSchema=new mongoose.Schema({
+const RewardsSchema = new mongoose.Schema({
 
-    id:{},
+    id: {},
 
-    YourXPs:{type:Number},
+    YourXPs: { type: Number },
 
-    TotalXPs:{type:Number},
+    TotalXPs: { type: Number },
 
-    Rank:{type:Number},
+    Rank: { type: Number },
 
-    TotalCourses:{type:Number},
+    TotalCourses: { type: Number },
 
-    CompletedCourses:{type:Number},
+    CompletedCourses: { type: Number },
 
-    TotalAssignments:{type:Number},
+    TotalAssignments: { type: Number },
 
-    CompletedAssignments:{type:Number}
+    CompletedAssignments: { type: Number }
 
 });
-module.exports=mongoose.model("Rewards",RewardsSchema);
+module.exports = mongoose.model("Rewards", RewardsSchema);

@@ -18,7 +18,6 @@ export default function IconBtn({
       >
         {children ? (
           <> 
-          {/* Both children and text are rendered, so, wrapped in React fragments */}
             <span className={`${outline && "text-yellow-50"}`}>{text}</span>
             {children}
           </>

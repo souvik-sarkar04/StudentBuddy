@@ -1,14 +1,11 @@
 import React from 'react';
 import { useEffect, useState } from "react";
-// import {OtpInput} from "reactjs-otp-input";
-// npm install --save react-otp-input
 import { Link } from "react-router-dom";
 import { BiArrowBack } from "react-icons/bi";
 import { RxCountdownTimer } from "react-icons/rx";
 import { useDispatch, useSelector } from "react-redux";
 import { sendOtp, signUp } from "../services/operations/authAPI";
 import { useNavigate } from "react-router-dom";
-// import CustomOtpInput from '../components/common/CustomOtpInput';
 
 import CustomOtpInput from '../components/common/CustomOTPInput';
 function VerifyEmail() {
@@ -17,13 +14,11 @@ function VerifyEmail() {
         setOtp(otp)
         console.log('OTP:', otp);
       };
-//   const handleChange = (otp) => setOtp(otp);
   const { signupData, loading } = useSelector((state) => state.auth); //? signUpData is extracted from authSlice
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   useEffect(() => {
-    /// Only allow access of this route when user has filled the signup form
     if (!signupData) {
       navigate("/signup");
     }
@@ -69,26 +64,7 @@ function VerifyEmail() {
             A verification code has been sent to you. Enter the code below
           </p>
           <form onSubmit={handleVerifyAndSignup}>
-            {/* <OtpInput
-              value={otp}
-              onChange={setOtp}
-              numInputs={6}
-              renderInput={(props) => (
-                <input
-                  {...props}
-                  placeholder="-"
-                  style={{
-                    boxShadow: "inset 0px -1px 0px rgba(255, 255, 255, 0.18)",
-                  }}
-                  className="w-[48px] lg:w-[60px] border-0 bg-richblack-800 rounded-[0.5rem] text-richblack-5 aspect-square text-center focus:border-0 focus:outline-2 focus:outline-yellow-50"
-                /> /// these css properties in input field are essential for making the numbers entered visible
-              )}
-              containerStyle={{
-                justifyContent: "space-between",
-                gap: "0 6px",
-              }}
-            /> */}
-             {/* <OtpInput value={otp} onChange={handleChange} numInputs={6} separator={<span>-</span>} />; */}
+            
              <CustomOtpInput numInputs={6} onChange={handleOtpChange} />
             <button
               type="submit"
@@ -107,9 +83,7 @@ function VerifyEmail() {
               className="flex items-center text-blue-100 gap-x-2"
               onClick={() => dispatch(sendOtp(signupData.email, navigate))}
               >
-              {/* /// to resend otp email, email id is needed */}
-              {/* //! CHANGE : navigate passed as parameter to sendOtp() to avoid error(2 toasts displayed on clicking ''Resend OTP') */}
-              <RxCountdownTimer />
+             <RxCountdownTimer />
               Resend it
             </button>
           </div>

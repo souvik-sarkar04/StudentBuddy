@@ -5,10 +5,7 @@ import Sidebar from "../components/core/Dashboard/Sidebar"
 import { useForm } from "react-hook-form"
 function Dashboard() {
   const { loading: profileLoading } = useSelector((state) => state.profile)
-  // console.log(profileLoading)
   const { loading: authLoading } = useSelector((state) => state.auth)
-// const ref = useRef(null)
-// const {register} = useForm()
   if (profileLoading || authLoading) {
     /// Add spinner(Loading...) if loading is taking place 
     return (

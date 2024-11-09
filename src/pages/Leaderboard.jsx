@@ -28,7 +28,6 @@ export default function Leaderboard() {
   }, []);
 
   return (
-    //  from-blue-600
     <div className="bg-gradient-to-b via-indigo-600 to-purple-700 min-h-screen text-white flex flex-col items-center">
       <nav className="w-full bg-gradient-to-r from-amber-200 to-yellow-500 flex items-center justify-between p-4 shadow-lg">
         <div className="menu">

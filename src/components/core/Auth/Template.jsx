@@ -1,7 +1,4 @@
-// import { FcGoogle } from "react-icons/fc"
 import { useSelector } from "react-redux"
-
-// import frameImg from "../../../assets/Images/frame.png"
 import LoginForm from "./LoginForm"
 import SignupForm from "./SignupForm"
 
@@ -28,7 +25,6 @@ function Template({ title, description1, description2, image, formType }) {
           </div>
           <div className="relative mx-auto w-11/12 max-w-[450px] md:mx-0">
             <img
-            //   src={frameImg}
               alt="Pattern"
               width={558}
               height={504}
@@ -39,7 +35,7 @@ function Template({ title, description1, description2, image, formType }) {
               alt="Students"
               width={558}
               height={504}
-              loading="lazy" /// image will only load when it comes into the user's viewport(when user scrolls down)
+              loading="lazy"
               className="absolute -top-4 right-4 z-10"
             />
           </div>

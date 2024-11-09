@@ -6,11 +6,9 @@ const { uploadImageToCloudinary } = require("../utils/imageUploader")
 /// Create a new sub-section for a given section
 exports.createSubSection = async (req, res) => {
   try {
-    /// Extract necessary information from the request body
     const { sectionId, title, description } = req.body
     const video = req.files.video
 
-    /// Check if all necessary fields are provided
     if (!sectionId || !title || !description || !video) {
       return res
         .status(404)
@@ -18,13 +16,11 @@ exports.createSubSection = async (req, res) => {
     }
     console.log(video)
 
-    /// Upload the video file to Cloudinary
     const uploadDetails = await uploadImageToCloudinary(
       video,
       process.env.FOLDER_NAME
     )
     console.log(uploadDetails)
-    /// Create a new sub-section with the necessary information
     const SubSectionDetails = await SubSection.create({
       title: title,
       timeDuration: `${uploadDetails.duration}`,
@@ -32,7 +28,6 @@ exports.createSubSection = async (req, res) => {
       videoUrl: uploadDetails.secure_url,
     })
 
-    /// Update the corresponding section with the newly created sub-section
     const updatedSection = await Section.findByIdAndUpdate(
       { _id: sectionId },
       {
@@ -43,7 +38,6 @@ exports.createSubSection = async (req, res) => {
       { new: true }
     ).populate("subSection")
 
-    /// Return the updated section in the response
     return res.status(200).json(
       {
         success: true,
@@ -51,7 +45,6 @@ exports.createSubSection = async (req, res) => {
       })
 
   } catch (error) {
-    /// Handle any errors that may occur during the process
     console.error("Error creating new sub-section:", error)
     return res.status(500).json({
       success: false,
@@ -64,7 +57,6 @@ exports.createSubSection = async (req, res) => {
 exports.updateSubSection = async (req, res) => {
   try {
     const { sectionId, subSectionId, title, description } = req.body
-    //! Error resolving -> subSection to be extracted using subSectionId
     const subSection = await SubSection.findById(subSectionId)
 
     if (!subSection) {
@@ -73,8 +65,6 @@ exports.updateSubSection = async (req, res) => {
         message: "SubSection not found",
       })
     }
-    //! Change done in Edtech Frontend 3 (Part 2) : All the code lines written before return -> data has to be sent to backend(backend-frontend collaboration)
-/// Validation + assigning atrributes to the subSection data object
     if (title !== undefined) {
       subSection.title = title
     }
@@ -91,10 +81,8 @@ exports.updateSubSection = async (req, res) => {
       subSection.videoUrl = uploadDetails.secure_url
       subSection.timeDuration = `${uploadDetails.duration}`
     }
-//?  save a new document or update an existing one in MongoDB
-    await subSection.save()
+  await subSection.save()
 
-    //! find updated section and return it
     const updatedSection = await Section.findById(sectionId).populate(
       "subSection"
     )
@@ -104,7 +92,6 @@ exports.updateSubSection = async (req, res) => {
     return res.json({
       success: true,
       message: "Section updated successfully",
-      //! data of updated section successfully sent to response
       data: updatedSection,
     })
   } catch (error) {
@@ -129,7 +116,6 @@ exports.deleteSubSection = async (req, res) => {
         },
       }
     )
-    /// delete subsection
     const subSection = await SubSection.findByIdAndDelete({ _id: subSectionId })
 
     if (!subSection) {
@@ -138,9 +124,6 @@ exports.deleteSubSection = async (req, res) => {
         .json({ success: false, message: "SubSection not found" })
     }
 
-    //! Change done in Edtech Frontend 3 (Part 2) : All the code lines written before return -> data has to be sent to backend(backend-frontend collaboration)
-
-    //! find updated section and return it
     const updatedSection = await Section.findById(sectionId).populate(
       "subSection"
     )
@@ -148,8 +131,7 @@ exports.deleteSubSection = async (req, res) => {
     return res.json({
       success: true,
       message: "SubSection deleted successfully",
-      //! data of updated section successfully sent to response
-      data: updatedSection,
+     data: updatedSection,
     })
   } catch (error) {
     console.error(error)

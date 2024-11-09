@@ -1,5 +1,4 @@
 
-// import Navbar from '../components/core/Navbar.jsx'
 import React from 'react'
 import { useState, useRef, useEffect } from 'react'
 import { noScrollbarsClassName } from 'react-remove-scroll-bar'
@@ -10,9 +9,7 @@ import { v4 as uuidv4 } from 'uuid';
 import Calendar from '../components/core/Calendar';
 import Timer from '../components/core/Timer'
 
-
 function Assignment() {
-
 	const [form, setForm] = useState({ assignment: "", date: null });
 	const [forms, setForms] = useState([]);
 	const [editOn, setEditOn] = useState(false)
@@ -36,7 +33,6 @@ function Assignment() {
 		let newForms = [...forms, { ...form, date: updatedDate, id: uuidv4() }];
 		localStorage.setItem("formArray", JSON.stringify(newForms));
 		setForms(newForms);
-		//console.log(newForms);
 		setForm({ assignment: "", date: null });
 		setEditOn(false)
 		setTime("00:00")
@@ -53,8 +49,7 @@ function Assignment() {
 		}
 		else {
 			setTime(e.target.value)
-			//console.log(e + " : " + e.target + " : " + e.target.value)
-
+			
 		}
 	}
 
@@ -87,7 +82,6 @@ function Assignment() {
 	return (
 		<>
 			<div className="absolute top-0 z-[-2] h-screen w-screen bg-neutral-950 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]"></div>
-			{/* <Navbar /> */}
 
 			<div className='h-[calc(100vh-64px)] w-[100vw] bg-gray-700 flex md:flex-row flex-col-reverse justify-center items-center '>
 				<div className='h-full md:w-1/4 w-full flex flex-col items-center my-10'>
@@ -105,9 +99,7 @@ function Assignment() {
 							<input type="time" className='border rounded-md h-8 w-25 mx-3' name='time' onChange={handleTime} value={time} />
 
 						</div>
-						{/*  className={`text-center text-[13px] sm:text-[16px] px-6 py-3 rounded-md font-bold shadow-[2px_2px_0px_0px_rgba(255,255,255,0.18)] ${
-          active ? "bg-yellow-50 text-black " : "bg-richblack-800"
-        } hover:shadow-none hover:scale-95 transition-all duration-200 ` */}
+						
 						<div className='w-full'><button disabled={form.assignment.length < 3} onClick={handleClick} className="text-center text-[13px] sm:text-[16px] px-6 py-3 rounded-md font-bold shadow-[2px_2px_0px_0px_rgba(255,255,255,0.18)] 
          bg-yellow-50 text-black">
 							Save

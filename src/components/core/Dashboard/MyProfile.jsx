@@ -13,7 +13,6 @@ export default function MyProfile() {
 
   return (
     <>
-      {/* <div className="text-white">hiiiiiiiiiiiiiiiiiiiiiiiiiii</div> */}
       <h1 className="mb-14 text-4xl font-medium text-center text-richblack-5">
         My Profile
       </h1>
@@ -39,7 +38,7 @@ export default function MyProfile() {
           }}
 
         >
-          <RiEditBoxLine />      {/* React icon */}
+          <RiEditBoxLine />      
         </IconBtn>
       </div>
       {/* //? Section 2 */}
@@ -66,7 +65,6 @@ export default function MyProfile() {
         </p>
       </div>
 
-      {/* //? Section 3  : all details used as user?.entity can be seen in models of User and Profile */}
       <div className="my-10 flex flex-col gap-y-10 rounded-md border-[1px] border-richblack-700 bg-richblack-800 p-8 px-12">
         <div className="flex w-full items-center justify-between">
           <p className="text-lg font-semibold text-richblack-5">

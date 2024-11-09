@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react"
 import ProgressBar from "@ramonak/react-progress-bar"
-// import { BiDotsVerticalRounded } from "react-icons/bi"
 import { useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
 
@@ -20,19 +19,6 @@ export default function EnrolledCourses() {
   const { token } = useSelector((state) => state.auth)
   const navigate = useNavigate()
 
-  // const [enrolledCourses, setEnrolledCourses] = useState(null)
-  // const getEnrolledCourses = async () => {
-  //   try {
-  //     const res = await getUserEnrolledCourses(token);
-
-  //     setEnrolledCourses(res);
-  //   } catch (error) {
-  //     console.log("Could not fetch enrolled courses.")
-  //   }
-  // };
-  // useEffect(() => {
-  //   getEnrolledCourses();
-  // }, [])
   const enrolledCourses = [
     {
       id: 1,
@@ -121,7 +107,6 @@ export default function EnrolledCourses() {
       <>
        
         <div className="my-8 text-richblack-5">
-          {/* /// Headings */}
           <div className="flex rounded-t-lg bg-richblack-500 ">
             <p className="w-[45%] px-5 py-3">Course Name</p>
             <p className="w-1/4 px-2 py-3">Duration</p>
@@ -141,10 +126,8 @@ export default function EnrolledCourses() {
                   navigate(
                     `/view-course/${course?.id}/section/${course.courseName}`
                   )
-                  /// [0]._id -> when item is clicked on "enrolled-courses", we are navigated to a page where 1st item of the section is highlighted
-                }}
+                   }}
               >
-                {/* /// Left half - thumbnail added, name and description */}
                 <img
                   src={course.thumbnail}
                   alt="course_img"
@@ -159,12 +142,9 @@ export default function EnrolledCourses() {
                   </p>
                 </div>
               </div>
-              {/* /// Duration added */}
               <div className="w-1/4 px-2 py-3">{course?.totalDuration}</div>
-              {/* /// Progress and progress bar added */}
               <div className="flex w-1/5 flex-col gap-2 px-2 py-3">
                 <p>Progress: {course.progressPercentage || 0}%</p>
-                {/* /// React Progress Bar  */}
                 <ProgressBar
                   completed={course.progressPercentage || 0}
                   height="8px"

@@ -1,7 +1,4 @@
 import { toast } from "react-hot-toast"
-
-// import { updateCompletedLectures } from "../../slices/viewCourseSlice"
-// import { setLoading } from "../../slices/profileSlice";
 import { apiConnector } from "../apiconnector"
 import { courseEndpoints } from "../api"
 
@@ -58,29 +55,11 @@ export const fetchCourseDetails = async (courseId) => {
   } catch (error) {
     console.log("COURSE_DETAILS_API API ERROR............", error)
     result = error.response.data
-    // toast.error(error.response.data.message);
   }
   toast.dismiss(toastId)
-  //   dispatch(setLoading(false));
   return result
 }
 
-// fetching the available course categories
-// export const fetchCourseCategories = async () => {
-//   let result = []
-//   try {
-//     const response = await apiConnector("GET", COURSE_CATEGORIES_API)
-//     console.log("COURSE_CATEGORIES_API API RESPONSE............", response)
-//     if (!response?.data?.success) {
-//       throw new Error("Could Not Fetch Course Categories")
-//     }
-//     result = response?.data?.data
-//   } catch (error) {
-//     console.log("COURSE_CATEGORY_API API ERROR............", error)
-//     toast.error(error.message)
-//   }
-//   return result
-// }
 
 // add the course details
 export const addCourseDetails = async (data, token) => {
@@ -113,7 +92,6 @@ export const addCourseDetails = async (data, token) => {
   toast.dismiss(toastId)
   return result
 }
-/// apply optional chaining, error.response.data.message to check the error message thrown from backend
 // edit the course details
 export const editCourseDetails = async (data, token) => {
   let result = null
