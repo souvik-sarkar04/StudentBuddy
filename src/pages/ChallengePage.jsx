@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import pic from "./pic.jpg"
+// import pic from "./pic.jpg"
 export default function ChallengePage() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [completedCount, setCompletedCount] = useState(0);
@@ -57,7 +57,9 @@ export default function ChallengePage() {
         </div>
         <h1 className="text-5xl font-bold">Your Challenges</h1>
         <div className="flex items-center">
-          <img src={pic} alt="Profile-Picture" className="w-24 h-24 rounded-full transition-transform duration-300 transform hover:scale-110 cursor-pointer" />
+          <img 
+          // src={pic}
+           alt="Profile-Picture" className="w-24 h-24 rounded-full transition-transform duration-300 transform hover:scale-110 cursor-pointer" />
           {isMenuOpen && (
             <div className="absolute top-12   left-12 mt-1 bg-white rounded-md shadow-lg z-10">
               <ul className="p-2">

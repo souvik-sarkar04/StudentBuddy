@@ -7,22 +7,19 @@
       spinner-oaa3wk 1.6s infinite linear;
   }
 
-
-  *{
-    margin: 0;
-    padding: 0;
+  .blackButton {
+    @apply cursor-pointer rounded-md bg-richblack-800 px-[20px] py-[8px] font-semibold text-richblack-5;
   }
   
-  *::-webkit-scrollbar {
-    display: none;
+  .lable-style {
+    @apply text-[14px] text-richblack-5;
   }
   
+  .form-style {
+    @apply rounded-lg bg-richblack-700 p-3 text-[16px] leading-[24px] text-richblack-5 shadow-[0_1px_0_0] shadow-white/50 placeholder:text-richblack-400 focus:outline-none;
+  }
   
-  .wrapped-text {
-    max-width: 300px; /* Adjust the width as needed */
-    overflow-wrap: break-word; /* Allow breaking of words */
-    overflow: hidden; /* Hide overflow content */
-    text-overflow: ellipsis; /* Add ellipsis for overflowed text */
-    white-space: normal; /* Allow wrapping */
+  .section_heading {
+    @apply text-2xl font-bold text-richblack-5 lg:text-4xl;
   }
   

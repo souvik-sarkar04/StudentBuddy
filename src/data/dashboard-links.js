@@ -52,7 +52,7 @@ export const sidebarLinks = [
   {
     id: 8,
     name: "Leaderboard",
-    path: "/leaderboard",
+    path: "/dashboard/leaderboard",
     // type: ACCOUNT_TYPE.STUDENT,
     icon: "VscHistory", 
   },
