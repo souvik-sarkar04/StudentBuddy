@@ -74,15 +74,15 @@ const Calendar = ({form, setForm}) => {
             <h2 id="currentMonth" className="text-white">{`${monthNames[currentMonth]} ${currentYear}`}</h2>
             <button onClick={handleNextMonth} className="text-white">Next</button>
           </div>
-          <div className="grid grid-cols-7 gap-2 p-2">
+          <div className="border-r-yellow-50 grid grid-cols-7 gap-2 p-2">
             {['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map((day) => (
-              <div key={day} className="text-center font-semibold">{day}</div>
+              <div key={day} className="text-center text-white font-semibold">{day}</div>
             ))}
             {calendarDays.map((day, index) => (
               <div
                 key={index}
                 onClick={() => day && handleDateClick(day)}
-                className={classNames(`text-center py-1 border border-gray-800 text-gray-400 rounded-full active:bg-red-600 hover:bg-gray-300 hover:text-gray-600 cursor-pointer ${day === new Date().getDate() && currentMonth === new Date().getMonth() && currentYear === new Date().getFullYear()? 'bg-blue-500 text-white' : ''}`)}
+                className={classNames(`text-white text-center py-1 border border-gray-800 text-gray-400 rounded-full active:bg-red-600 hover:bg-gray-300 hover:text-gray-600 cursor-pointer ${day === new Date().getDate() && currentMonth === new Date().getMonth() && currentYear === new Date().getFullYear()? 'bg-blue-500 text-white' : ''}`)}
               >
                 {day}
               </div>

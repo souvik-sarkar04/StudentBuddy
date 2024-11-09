@@ -1,14 +1,14 @@
 import { useState, useEffect } from "react";
-// import pic from "./pic.jpg";
+import pic from "./pic.jpg";
 
 export default function RewardsPage() {
     const [userInfo, setUserInfo] = useState({
         name: "Vishwajeet Champ",
-        // profilePicture: pic,
+        profilePicture: pic,
         rank: 5,
     });
     const [userXP, setUserXP] = useState({
-        currentXP: 566,
+        currentXP: 50,
         totalXP: 1200,
         rank: 5,
     });
@@ -43,7 +43,7 @@ export default function RewardsPage() {
                     <div className="flex items-center">
                         <i className="fa-solid fa-bars menu-icon text-3xl cursor-pointer" onClick={toggleMenu}></i>
                     </div>
-                    <h1 className="text-5xl font-bold">Your - Rewards + Progress</h1>
+                    <h1 className="text-5xl font-bold text-white">Your Rewards</h1>
                     <div className="flex items-center mt-6">
                         <img src={userInfo.profilePicture} alt="Profile-Picture" className="w-24 h-24 rounded-full transition-transform duration-300 transform hover:scale-110 cursor-pointer" />
                         {isMenuOpen && (
@@ -63,22 +63,22 @@ export default function RewardsPage() {
                 ) : (
                     <div>
                         <div className="flex justify-center mb-1 items-center h-20 w-full bg-gradient-to-r from-slate-200 via-slate-300 to-gray-400 hover:from-slate-200 hover:to-gray-300">
-                            <p className="from-neutral-700 text-5xl mt-6 italic">LEARN , THINK , ACHIEVE</p>
+                            <p className="from-neutral-700 text-4xl mt-4 italic text-white">LEARN , THINK , ACHIEVE</p>
                         </div>
 
                         <div className="h-64 w-full bg-gradient-to-r from-teal-200 to-blue-300">
                             <div className="flex bg-gradient-to-r from-teal-200 to-blue-300">
-                                <p className="font-mono text-4xl mt-4 ml-8">HI, {userInfo.name}</p>
+                                <p className="font-mono text-4xl mt-4 ml-8 text-white" >HI, {userInfo.name}</p>
                             </div>
                             <div className="flex justify-around mt-14 ">
-                                <div className="hover:bg-teal-100">
+                                <div className="hover:bg-teal-100 text-white">
                                     <p className="font-semibold text-2xl"><i className="fa-solid fa-award"></i> Your Aura XP's - <br /> &nbsp; &nbsp; {userXP.currentXP}</p>
                                 </div>
-                                <div className="hover:bg-teal-100">
+                                <div className="hover:bg-teal-100  text-white">
                                     <p className="font-semibold text-2xl"><i className="fa-solid fa-ranking-star"></i> Your Rank - <br /> &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; {userInfo.rank}</p>
                                 </div>
-                                <div className="hover:bg-teal-100">
-                                    <p className="font-semibold text-2xl"><i className="fa-solid fa-circle-check"></i>Courses Completed :  <br /> &nbsp; &nbsp; {assignmentsData.completed}</p>
+                                <div className="hover:bg-teal-100  text-white">
+                                    <p className="font-semibold text-2xl"><i className="fa-solid fa-circle-check"></i>Courses Completed  <br /> &nbsp; &nbsp; {assignmentsData.completed}</p>
                                 </div>
                             </div>
                         </div>

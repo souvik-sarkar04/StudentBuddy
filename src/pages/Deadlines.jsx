@@ -6,7 +6,7 @@ import { FaSortDown, FaSortUp } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
 import { CiEdit } from "react-icons/ci";
 import { v4 as uuidv4 } from 'uuid';
-import Navbar from '../components/core/Navbar'
+// import Navbar from '../components/core/Navbar'
 
 const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
 const times = Array.from({ length: 24 }, (_, index) => index);
@@ -21,7 +21,7 @@ function Classshedule() {
 	let idx = 0;
 
 	const handleClick = (e) => {
-		if (form.class.length <= 3) return;
+		if (form.class.length < 3) return;
 		let newForms = [...forms, { ...form, id: uuidv4() }];
 		localStorage.setItem("formArray", JSON.stringify(newForms));
 		setForms(newForms);
@@ -56,23 +56,22 @@ function Classshedule() {
 
 	return (
 		<>
-			<div className="absolute top-0 z-[-2] h-screen w-screen bg-neutral-950 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]"></div>
-			<Navbar />
-
+		{/* bg-neutral-950 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))] */}
+			<div className="absolute top-0 z-[-2] h-screen w-screen "></div>
+			{/* <Navbar /> */}
 			{/*body*/}
-
 			<div className='h-[calc(100vh-64px)] w-[100vw] bg-gray-700 flex md:flex-row flex-col-reverse justify-center items-center '>
 				<div className='h-full md:w-1/4 w-full flex flex-col items-center my-10'>
-					<h1 className='text-white font-bold text-2xl py-3'>Add Classes</h1>
+					<h1 className='text-white font-bold text-3xl py-3'>Add Classes</h1>
 					<div className='flex flex-col items-end'>
 						<input
-							className='border-1 mx-3 block h-10 w-[90%] rounded-md border border-double border-gray-800 border-transparent bg-gray-800 bg-origin-border px-3 py-2 text-slate-200 transition-all duration-500 [background-clip:padding-box,_border-box] placeholder:text-slate-500 focus:bg-[linear-gradient(#000,#000),linear-gradient(to_right,#c7d2fe,#8678f9)] focus:outline-none'
+							className='text-blue-400 border-1 mx-3 my-3 block h-10 w-[90%] rounded-md border border-double border-gray-800 border-transparent bg-gray-800 bg-origin-border px-3 py-2 text-slate-200 transition-all duration-500 [background-clip:padding-box,_border-box] placeholder:text-slate-500 focus:bg-[linear-gradient(#000,#000),linear-gradient(to_right,#c7d2fe,#8678f9)] focus:outline-none'
 							placeholder='Enter Class' onChange={handleChange} type='text' value={form.class} name='class' />
 
 						<div className='flex justify-center items-center my-4'>
 							<h1 className='text-white'>Select a Day  :  </h1>
 							<select onChange={handleChange}
-								className='bg-gray-800 text-white h-10 w-auto mx-3 focus:bg-black rounded-lg' name='day' value={form.day}>
+								className='bg-gray-800 text-blue-400 h-10 w-auto mx-3 focus:bg-black rounded-lg' name='day' value={form.day}>
 								{days.map((day, index) => {
 									return <option key={index} value={day}>{day}</option>
 								})}
@@ -82,7 +81,7 @@ function Classshedule() {
 
 						<div className='flex justify-center items-center my-4'>
 							<h1 className='text-white'>From  :  </h1>
-							<select onChange={handleChange} className='scroll bg-gray-800 text-white h-10 w-auto mx-3 focus:bg-black rounded-lg' name='time' value={form.time}>
+							<select onChange={handleChange} className='scroll bg-gray-800 text-blue-400 h-10 w-auto mx-3 focus:bg-black rounded-lg' name='time' value={form.time}>
 								{times.map((time, index) => {
 									return <option key={index} value={time}>{time}</option>
 								})}
@@ -90,7 +89,8 @@ function Classshedule() {
 						</div>
 
 
-						<div className='w-full'><button disabled={form.class.length < 3} onClick={handleClick} className=' transition-background inline-flex h-12 mx-3 items-center justify-center rounded-md border border-gray-800 bg-gradient-to-r from-gray-100 via-[#c7d2fe] to-gray-800 bg-[length:200%_200%] bg-[0%_0%] px-6 font-medium text-gray-950 duration-500 hover:bg-[100%_200%] focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 focus:ring-offset-gray-50'>
+						<div className='w-full'><button disabled={form.class.length < 3} onClick={handleClick} className='"text-center text-[13px] sm:text-[16px] px-6 py-3 rounded-md font-bold shadow-[2px_2px_0px_0px_rgba(255,255,255,0.18)] 
+         bg-yellow-50 text-black" mx-3'>
 							Save
 						</button></div>
 
@@ -102,7 +102,7 @@ function Classshedule() {
 
 				{/*right*/}
 				<div className='h-full md:w-3/4 w-full bg-gray-300 flex flex-col justify-center items-center'>
-					{forms.length == 0 ? <div><div className='h-[1px] bg-white w-full'></div> <h1 className='text-4xl my-7'>No Classsss</h1><div className='h-[1px] bg-white w-full'></div></div> :
+					{forms.length == 0 ? <div><div className='h-[1px] bg-white w-full'></div> <h1 className='text-4xl  text-white my-7'>No Classsss</h1><div className='h-[1px] bg-white w-full'></div></div> :
 						<table className='table-auto rounded-md w-[90%] overflow-hidden'>
 							<thead className='w-[100%] bg-black text-white'>
 								<tr className='w-[100%] h-5'>
@@ -113,7 +113,7 @@ function Classshedule() {
 									<th>Action</th>
 								</tr>
 							</thead>
-							<tbody>
+							<tbody className='text-white'>
 
 								{forms.map((item, index) => {
 									if (selectedDay === "Any" || selectedDay === item.day)

@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-// import pic from "./pic.jpg";
+import pic from "./pic.jpg";
 
 export default function Leaderboard() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
-  const [leaderboardData] = useState([...Array(10)].map((_, i) => ({ id: `id-${i + 1}`, points: (i + 1) * 10 })));
+  const [leaderboardData] = useState([...Array(10)].map((_, i) => ({ id: `id-${i + 1}`, points: 100 - i * 10 })));
   const [userRank] = useState(5); 
   const [userPoints] = useState(50); 
 
@@ -28,7 +28,8 @@ export default function Leaderboard() {
   }, []);
 
   return (
-    <div className="bg-gradient-to-b from-blue-600 via-indigo-600 to-purple-700 min-h-screen text-white flex flex-col items-center">
+    //  from-blue-600
+    <div className="bg-gradient-to-b via-indigo-600 to-purple-700 min-h-screen text-white flex flex-col items-center">
       <nav className="w-full bg-gradient-to-r from-amber-200 to-yellow-500 flex items-center justify-between p-4 shadow-lg">
         <div className="menu">
           <i
@@ -38,7 +39,7 @@ export default function Leaderboard() {
         </div>
         <div className="flex items-center gap-2">
           <input
-            className="w-40 md:w-96 h-11 rounded-lg px-4 text-gray-700 focus:ring-2 focus:ring-yellow-400"
+            className="text-blue-400 w-40 md:w-96 h-11 rounded-lg px-4 text-gray-700 focus:ring-2 focus:ring-yellow-400"
             type="search"
             placeholder="Search by ID"
             value={searchQuery}
@@ -49,7 +50,7 @@ export default function Leaderboard() {
         <div className="rounded-full overflow-hidden w-12 h-12 cursor-pointer transition-transform duration-300 transform hover:scale-110 hover:rotate-6 shadow-md">
           <a href="profile.html">
             <img 
-            // src={pic}
+            src={pic}
              alt="Profile" className="w-full h-full object-cover" />
           </a>
         </div>
@@ -66,9 +67,9 @@ export default function Leaderboard() {
       )}
 
       <div className="bg-gradient-to-r from-white to-gray-100 rounded-lg shadow-lg mt-10 p-6 w-11/12 md:w-3/4 lg:w-1/2 overflow-y-auto max-h-[600px]">
-        <h2 className="text-4xl font-bold text-center text-gray-900 mb-4">Leaderboard</h2>
+        <h2 className="text-4xl font-bold text-center text-gray-900 mb-4 text-richblack-900">Leaderboard</h2>
 
-        <div className="flex justify-between text-xl font-bold text-gray-700 border-b-2 pb-2">
+        <div className=" text-blue-400 flex justify-between text-xl font-bold text-gray-700 border-b-2 pb-2">
           <span>Rank</span>
           <span>Student ID</span>
           <span>Aura Points</span>
@@ -77,7 +78,7 @@ export default function Leaderboard() {
         {leaderboardData
           .filter((entry) => entry.id.includes(searchQuery))
           .map((entry, index) => (
-            <div className="flex justify-between items-center text-lg text-gray-800 border-b py-2" key={entry.id}>
+            <div className="flex  text-blue-400 justify-between items-center text-lg text-gray-800 border-b py-2" key={entry.id}>
               <span>{index + 1}</span>
               <span>{entry.id}</span>
               <span>{entry.points}</span>

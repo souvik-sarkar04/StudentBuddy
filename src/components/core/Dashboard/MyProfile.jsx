@@ -4,7 +4,8 @@ import { useNavigate } from "react-router-dom"
 
 import { formattedDate } from "../../../utils/dateFormatter"
 import IconBtn from "../../common/IconBtn"
-import EnrolledCourses from "./EnrolledCourses"
+import EnrolledCourses from "./Classes/EnrolledCourses"
+import displayIcon from './displayIcon.png'
 
 export default function MyProfile() {
   const { user } = useSelector((state) => state.profile)
@@ -12,15 +13,15 @@ export default function MyProfile() {
 
   return (
     <>
-     {/* <div className="text-white">hiiiiiiiiiiiiiiiiiiiiiiiiiii</div> */}
-      <h1 className="mb-14 text-3xl font-medium text-richblack-5">
+      {/* <div className="text-white">hiiiiiiiiiiiiiiiiiiiiiiiiiii</div> */}
+      <h1 className="mb-14 text-4xl font-medium text-center text-richblack-5">
         My Profile
       </h1>
       {/* //? Section 1 */}
       <div className="flex items-center justify-between rounded-md border-[1px] border-richblack-700 bg-richblack-800 p-8 px-12">
         <div className="flex items-center gap-x-4">
           <img
-            src={user?.image}
+            src={user?.image || displayIcon}
             alt={`profile-${user?.firstName}`}
             className="aspect-square w-[78px] rounded-full object-cover"
           />
@@ -55,18 +56,17 @@ export default function MyProfile() {
           </IconBtn>
         </div>
         <p
-          className={`${
-            user?.additionalDetails?.about /// refer User.js and Profile.js backend models to get more clarity
+          className={`${user?.additionalDetails?.about /// refer User.js and Profile.js backend models to get more clarity
               ? "text-richblack-5"
               : "text-richblack-400"
-          } text-sm font-medium`}
+            } text-sm font-medium`}
         >
-          {user?.additionalDetails?.about ?? "Write Something About Yourself"} 
+          {user?.additionalDetails?.about ?? "Write Something About Yourself"}
           {/* /// if user.aD.about does not exist, then the message after ?? is displayed */}
         </p>
       </div>
 
-            {/* //? Section 3  : all details used as user?.entity can be seen in models of User and Profile */}
+      {/* //? Section 3  : all details used as user?.entity can be seen in models of User and Profile */}
       <div className="my-10 flex flex-col gap-y-10 rounded-md border-[1px] border-richblack-700 bg-richblack-800 p-8 px-12">
         <div className="flex w-full items-center justify-between">
           <p className="text-lg font-semibold text-richblack-5">
@@ -125,7 +125,7 @@ export default function MyProfile() {
           </div>
         </div>
       </div>
-      
+
     </>
   )
 }

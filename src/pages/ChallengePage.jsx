@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from 'react';
-// import pic from "./pic.jpg"
+import { useSelector } from 'react-redux';
+import pic from "./pic.jpg"
+import { setXP } from '../slices/profileSlice';
 export default function ChallengePage() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [completedCount, setCompletedCount] = useState(0);
   const [totalXP, setTotalXP] = useState(0);
+  const { xp, setXP } = useSelector((state) => state.profile)
   const [challenges, setChallenges] = useState([
     { name: 'Challenge 1', xp: 50, completed: false },
     { name: 'Challenge 2', xp: 100, completed: false },
@@ -25,6 +28,7 @@ export default function ChallengePage() {
       const total = challenges.reduce((acc, challenge) => challenge.completed ? acc + challenge.xp : acc, 0);
       setCompletedCount(completed);
       setTotalXP(total);
+      // setXP({xp})
     };
 
     updateSummary();
@@ -55,17 +59,17 @@ export default function ChallengePage() {
         <div className="flex items-center">
           <i className="fa-solid fa-bars menu-icon text-3xl cursor-pointer" onClick={toggleMenu}></i>
         </div>
-        <h1 className="text-5xl font-bold">Your Challenges</h1>
+        <h1 className="text-5xl font-bold text-white ">Your Challenges</h1>
         <div className="flex items-center">
           <img 
-          // src={pic}
+          src={pic}
            alt="Profile-Picture" className="w-24 h-24 rounded-full transition-transform duration-300 transform hover:scale-110 cursor-pointer" />
           {isMenuOpen && (
             <div className="absolute top-12   left-12 mt-1 bg-white rounded-md shadow-lg z-10">
               <ul className="p-2">
-                <li><a href="#" className="block py-2 px-4 hover:bg-gray-100">Dashboard</a></li>
-                <li><a href="#" className="block py-2 px-4 hover:bg-gray-100">Your Profile</a></li>
-                <li><a href="#" className="block py-2 px-4 hover:bg-gray-100">Aura Points</a></li>
+                <li><a href="#" className="block py-2 px-4 hover:bg-gray-100 text-white">Dashboard</a></li>
+                <li><a href="#" className="block py-2 px-4 hover:bg-gray-100  text-white">Your Profile</a></li>
+                <li><a href="#" className="block py-2 px-4 hover:bg-gray-100  text-white">Aura Points</a></li>
               </ul>
             </div>
           )}
@@ -73,12 +77,12 @@ export default function ChallengePage() {
       </nav>
 
       <div className="flex flex-1 ">
-        <aside className="bg-gray-300 overflow-y-scroll rounded-md   border-2 border-black h-[500px] w-48 mt-8 p-4"  style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}>
-          <h2 className="font-bold text-lg ">Challenges-bar</h2>
+        <aside className="bg-gray-300 overflow-y-scroll rounded-md   border-2 border-yellow-50 h-[500px] w-48 mt-8 p-4"  style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}>
+          <h2 className="font-bold text-lg text-white">Challenges-bar</h2>
           <hr />
           {challenges.map((challenge, index) => (
             <div key={index} className="py-2">
-              <a href="#" className="text-lg hover:bg-gray-100" >{challenge.name}</a>
+              <a href="#" className="text-lg hover:bg-gray-100 text-white" >{challenge.name}</a>
             </div>
           ))}
         </aside>
@@ -120,10 +124,24 @@ export default function ChallengePage() {
           </div>
         </main>
 
-        <aside className="bg-gray-300 border-2 overflow-y-auto mt-8 rounded-md h-[550px] border-black w-64 p-4"  style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}>
-          <h2 className="font-bold text-lg mb-4">Rules To get Aura XP</h2>
+        <aside className="bg-gray-300 border-2 overflow-y-auto mt-8 rounded-md h-[550px] border-yellow-50 w-64 p-4"  style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}>
+          <h2 className="font-bold text-lg mb-4 text-white">⚡Rules To get Aura XP</h2>
           <hr />
-          <div className="rule">1......</div>
+          <div className="rule text-white ">
+          <ul className="ml-5 list-item list-disc space-y-4 text-xs text-richblack-5">
+            <li>Complete challenges as soon as possible.</li>
+            <li>Completion of challenges will reward student with XPs.</li>
+            <li>Completion of challenges will reward student with Aura Points.</li>
+            <li>Challenges will contain completion of classes.</li>
+            <li>Challenges will contain completion of lectures.</li>
+            <li>Challenges will contain completion of assignments.</li>
+            <li>Earning XPs will help in earning vouchers and discounts on campus.</li>
+            <li>Earning Aura points will help in earning vouchers and discounts on campus.</li>
+            <li>
+             Contact the college event administrator for accessing vouchers and discounts on campus stalls.
+            </li>
+          </ul>
+          </div>
         </aside>
       </div>
     </div>

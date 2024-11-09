@@ -3,24 +3,26 @@ import IconBtn from '../../../common/IconBtn'
 import { RiEditBoxLine } from 'react-icons/ri'
 import { useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
-const Mentee = () => {
+import displayIcon from './displayIcon.png'
+
+const Mentee = ({title, email}) => {
     const { user } = useSelector((state) => state.profile)
     const navigate = useNavigate()
   return (
     <>
       {/* //? Section 1 */}
-      <div className="flex items-center justify-between rounded-md border-[1px] border-richblack-700 bg-richblack-800 p-8 px-12">
+      <div className="flex items-center justify-between rounded-md border-[1px] border-richblack-700 bg-gradient-to-r from-pink-500 via-red-500 to-orange-400 p-8 px-12">
         <div className="flex items-center gap-x-4">
           <img
-            src={user?.image}
+            src={user?.image || displayIcon}
             alt={`profile-${user?.firstName}`}
             className="aspect-square w-[78px] rounded-full object-cover"
           />
           <div className="space-y-1">
             <p className="text-lg font-semibold text-richblack-5">
-              {user?.firstName + " " + user?.lastName}
+              {title}
             </p>
-            <p className="text-sm text-richblack-300">{user?.email}</p>
+            <p className="text-sm text-richblack-300">{email}</p>
           </div>
         </div>
         {/* <IconBtn

@@ -21,7 +21,7 @@ function Navbar() {
 
   const [subLinks, setSubLinks] = useState([])
   const [loading, setLoading] = useState(false)
-const [XP, setXP] = useState(0)
+const [XP, setXP] = useState(50)
 
 //   useEffect(() => {
 //     ; (async () => {
@@ -145,9 +145,12 @@ const [XP, setXP] = useState(0)
             // </Link>
           {/* )} */}
          <Link to = '/dashboard/leaderboard'>
-         <div className="text-white flex bg-yellow-500 px-2 py-2 rounded-lg">
-<button>{`XP: ${XP}`}</button>
+         {token !== null && (
+         <div>
+<button  className="text-center text-[13px] sm:text-[16px] px-4 py-2 rounded-md font-bold shadow-[2px_2px_0px_0px_rgba(255,255,255,0.18)] 
+         bg-yellow-50 text-black">{`XP: ${XP}`}</button>
           </div>
+         )}
          </Link>
           {token === null && (  //? if user is logged out, then login button is shown
             <Link to="/login">

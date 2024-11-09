@@ -9,7 +9,7 @@ export const NavbarLinks = [
     },
     {
       title: "Courses",
-      path: "/dashboard/enrolled-courses",
+      path: "/dashboard/enrolled-classes",
     },
     {
         title: "Rewards",
